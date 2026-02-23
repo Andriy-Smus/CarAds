@@ -1,0 +1,24 @@
+// variables
+$bg-dark:       #030307;
+$bg-card: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(255,255,255,0.01) 100%
+);
+$bg-footer: #0f1114;
+$accent-orange: #FF5F1F;
+$accent-light:  #FF753F;
+
+// Text Colors
+$text-white:    #FFFFFF;
+$text-gray:     #A0A0A0;
+$text-muted: #7D7D7D;
+
+// Layout
+$radius-main:   12px;
+$radius-sm:     8px;
+$transition:    all 0.3s ease;
+
+// Effects
+$shadow-glow:   0 0 20px rgba(255, 95, 31, 0.3);
+$shadow-silver: 0 0 20px rgba(255, 255, 255, 0.1);

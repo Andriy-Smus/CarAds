@@ -1,0 +1,303 @@
+// header
+@use '../base/variables' as *;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    background: rgba($bg-dark, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba($text-gray, 0.1);
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 0px;
+        text-decoration: none;
+        z-index: 1001;
+
+        &-img {
+            display: block;
+            width: 35px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        span {
+            font-size: 24px;
+            font-weight: 700;
+            color: $text-white;
+            letter-spacing: 1px;
+        }
+
+        img {
+            height: 35px;
+            width: auto;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        color: $text-gray;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: $transition;
+
+        &:hover {
+            color: $accent-orange;
+        }
+    }
+
+    &__nav-footer {
+        display: none;
+    }
+
+    &__nav {
+        @media (max-width: 992px) {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba($bg-dark, 0.98) 0%, #030307 100%);
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 30px 40px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 100;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -50px;
+                width: 100px;
+                height: 200px;
+                background: $accent-orange;
+                filter: blur(80px);
+                opacity: 0.15;
+                pointer-events: none;
+            }
+
+            .header__menu {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 20px;
+                .header__link {
+                    font-size: 20px;
+                }
+            }
+
+            &.is-active {
+                right: 0;
+            }
+            .header__nav-footer {
+                width: 100%;
+                max-width: 260px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding-top: 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                .nav-phone-btn {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-decoration: none;
+                    background: rgba($accent-orange, 0.1);
+                    border: 1px solid rgba($accent-orange, 0.3);
+                    padding: 12px;
+                    border-radius: 12px;
+                    transition: all 0.3s ease;
+                
+                    span {
+                        color: $accent-orange;
+                        font-weight: 700;
+                        font-size: 16px;
+                        text-transform: uppercase;
+                    }
+                
+                    small {
+                        color: $text-white;
+                        opacity: 0.8;
+                        margin-top: 5px;
+                        font-size: 13px;
+                    }
+                
+                    &:active {
+                        background: $accent-orange;
+                        span, small { color: $text-white; }
+                    }
+                }
+                .nav-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                
+                    &__title {
+                        color: $text-gray;
+                        font-size: 14px;
+                        text-align: center;
+                        margin-bottom: 5px;
+                    }
+                
+                    &__input {
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        padding: 12px;
+                        border-radius: 10px;
+                        color: $text-white;
+                        outline: none;
+                        font-size: 14px;
+                        transition: all 0.3s ease;
+                
+                        &:focus {
+                            background: rgba(255, 255, 255, 0.08);
+                            border-color: $accent-orange;
+                            box-shadow: 0 0 10px rgba($accent-orange, 0.2);
+                        }
+                    }
+                    &__input:invalid:not(:placeholder-shown) {
+                        border-color: #eb4d4b;
+                    }
+                
+                    &__btn {
+                        background: $accent-orange;
+                        color: $text-white;
+                        border: none;
+                        padding: 12px;
+                        font-size: 14px;
+                        border-radius: 10px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        transition: opacity 0.3s;
+                
+                        &:active {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+
+    &__burger {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        z-index: 101;
+        transition: all 0.3s ease;
+
+        @media (max-width: 992px) {
+            display: flex;
+        }
+
+        span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: $accent-orange; // Основна лінія помаранчева
+            position: relative;
+            transition: all 0.3s ease;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                height: 2px;
+                background: $accent-orange;
+                right: 0;
+                transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            }
+
+            &::before {
+                width: 16px;
+                top: -8px;
+            }
+
+            &::after {
+                width: 22px;
+                bottom: -8px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            &:not(.is-active):hover {
+                background: rgba($accent-orange, 0.1);
+
+                span {
+
+                    &::before,
+                    &::after {
+                        width: 26px !important;
+                    }
+                }
+            }
+        }
+
+        &.is-active {
+            background: $accent-orange;
+
+            span {
+                background: transparent !important;
+
+                &::before,
+                &::after {
+                    width: 26px !important;
+                    background: $text-white !important;
+                    top: 0 !important;
+                    bottom: 0 !important;
+                    right: 0;
+                }
+
+                &::before {
+                    transform: rotate(45deg);
+                }
+
+                &::after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        &__actions {
+            display: none; // Кнопку в хедері на мобільних зазвичай ховають або переносять всередину меню
+        }
+    }
+}

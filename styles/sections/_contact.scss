@@ -1,0 +1,168 @@
+// // contact
+
+@use '../base/variables' as *;
+@use '../base/typography' as *; // Якщо створив міксини для медіа
+
+.contact {
+    padding: 60px 0; // Збільшуємо відступ, щоб відділити від FAQ
+    background: radial-gradient(circle at top right, rgba($accent-orange, 0.05), transparent), $bg-dark;
+
+    @media (max-width: 1200px) {
+        padding: 50px 0;
+    }
+
+    @media (max-width: 992px) {
+        padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+        padding: 30px 0;
+    }
+
+    @media (max-width: 480px) {
+        padding: 20px 0;
+    }
+
+    &__container {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+
+        @media (max-width: 992px) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+        }
+        @media (max-width: 480px) { 
+            gap: 20px; 
+        }
+    }
+
+    &__info {
+        flex: 1;
+        position: sticky;
+        top: 100px;
+        @media (max-width: 992px) {
+            position: static;
+            top: auto;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        text-align: left;
+        margin-bottom: 20px;
+        @media (max-width: 992px) { 
+            text-align: center; 
+        }
+        @media (max-width: 480px) { 
+            font-size: 20px;
+            font-weight: 600; 
+        }
+        span {
+            color: $accent-orange;
+        }
+    }
+
+    &__subtitle {
+        font-size: 18px;
+        color: $text-gray;
+        line-height: 1.6;
+
+        @media (max-width: 992px) {
+            max-width: 700px;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 16px;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__form {
+        flex: 1;
+        width: 100%;
+        max-width: 550px;
+        background: $bg-card;
+        backdrop-filter: blur(10px); // Ефект скла
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: $radius-main;
+        display: grid;
+        grid-template-columns: 1fr 1fr; // Ім'я та Телефон в один рядок
+        gap: 24px;
+
+        @media (max-width: 580px) {
+            grid-template-columns: 1fr;
+            padding: 25px;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        
+        &--full { grid-column: 1 / -1; } // Повідомлення на всю ширину
+    }
+
+    &__label {
+        font-size: 14px;
+        color: rgba($text-white, 0.6);
+        margin-bottom: 8px;
+        font-weight: 500;
+        transition: $transition;
+    }
+
+    &__input,
+    &__textarea {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 14px 18px;
+        border-radius: 10px;
+        color: $text-white;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &::placeholder { color: rgba($text-white, 0.2); }
+
+        &:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: $accent-orange;
+            box-shadow: 0 0 15px rgba($accent-orange, 0.1);
+            + .contact__label { color: $accent-orange; } // Підсвітка лейбла при фокусі
+        }
+    }
+
+    &__textarea {
+        min-height: 120px;
+        resize: none;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba($accent-orange, 0.3);
+            border-radius: 10px;
+        }
+    }
+
+    &__btn {
+        grid-column: 1 / -1;
+        justify-self: stretch; // Кнопка на всю ширину форми
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}

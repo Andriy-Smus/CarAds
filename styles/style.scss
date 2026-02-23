@@ -1,0 +1,65 @@
+// style.scss
+@use 'base/reset';
+@use 'base/variables';
+@use 'base/typography';
+@use 'base/mixins';
+@use 'base/animations';
+@use 'components/buttons';
+@use 'sections/header';
+@use 'sections/hero';
+@use 'sections/why-us';
+@use 'sections/services';
+@use 'sections/contact';
+@use 'sections/faq.scss';
+@use 'sections/footer';
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: variables.$text-white;
+    background-color: variables.$bg-dark;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    @media (max-width: 1200px) {
+        max-width: 992px;
+    }
+    @media (max-width: 992px) {
+        max-width: 768px;
+    }
+    @media (max-width: 768px) {
+        max-width: 576px;
+    }
+}
+
+p {
+    hyphens: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.no-scroll {
+    overflow: hidden;
+}

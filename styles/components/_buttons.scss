@@ -1,0 +1,56 @@
+// _buttons
+@use '../base/variables' as *;
+
+// Базовий стиль для всіх кнопок
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: $radius-sm;
+    transition: $transition;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-family: 'Montserrat', sans-serif;
+}
+
+// Головна кнопка (Помаранчева зі світінням)
+.btn-primary {
+    @extend .btn;
+    background-color: $accent-orange;
+    color: $text-white;
+    box-shadow: 0 4px 20px rgba($accent-orange, 0.3);
+
+    &:hover {
+        background-color: $accent-light;
+        box-shadow: 0 6px 25px rgba($accent-orange, 0.5);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Контурна кнопка (Для другорядних дій)
+.btn-outline {
+    @extend .btn;
+    background-color: transparent;
+    border-color: rgba($text-gray, 0.3);
+    color: $text-white;
+
+    &:hover {
+        border-color: $accent-orange;
+        color: $accent-orange;
+        background-color: rgba($accent-orange, 0.05);
+    }
+}
+
+// Маленька кнопка (Для хедера)
+.btn-sm {
+    padding: 10px 20px;
+    font-size: 14px;
+}
